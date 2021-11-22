@@ -14,8 +14,10 @@
     "history": "^5.1.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^3.4.4",
+    "redux": "^4.1.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
