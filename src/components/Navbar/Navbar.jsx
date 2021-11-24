@@ -16,11 +16,15 @@ const Navbar = () => {
                 <NavLink to="/news">Новости</NavLink>
             </div>
             <div className={s.item}>
+                <NavLink to="/users"> Поиск друзей </NavLink>
+            </div>
+            <div className={s.item}>
                 <NavLink to="/music">Музыка</NavLink>
             </div>
             <div className={s.item}>
                 <NavLink to="/settings">Настройки</NavLink>
             </div>
+            
         </nav>
     );
 }
