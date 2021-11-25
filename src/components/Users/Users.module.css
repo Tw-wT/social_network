@@ -1,4 +1,10 @@
 .img {
   width: 50px !important;
   height: 50px !important;
+  background-color: none;
 }
+
+.selectedPage{
+  font-weight: bold;
+}
+

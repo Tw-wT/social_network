@@ -1,47 +1,48 @@
 import React from "react"
 import s from "./Users.module.css"
-import * as axios from "axios"
 import userPhoto from "../../assets/images/default_user_avatar.jpg"
 
-class Users extends React.Component {
+const Users = (props) => {
 
-  componentDidMount () {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-      this.props.setUsers(response.data.items)
-      console.log(response)
-    })
-  }
+  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+  pagesCount = 20 //установил 20 т.к. пользователей больше 60к и кол-во страниц слишком большое
+  let pages = []
+  
+  for (let i = 1; i <= pagesCount ; i++) { //
+    pages.push(i)
+  }  
 
-  render() {
-    return (
-      <div>        
-        {
-          this.props.users.map(u => <div key={u.id}>
-            <span>
-              <div>
-                <img className={s.img} src={u.photos.small != null ? u.photos.small : userPhoto} />
-              </div>
-              <div>
-                {u.followed ? <button onClick={() => { this.props.unfollow(u.id) }}>Отписаться</button> : <button onClick={() => { this.props.follow(u.id) }}>Подписаться</button>}
-              </div>
-            </span>
-            <span>
-              <span>
-                <div>{u.name}</div>
-                <div>{u.status}</div>
-              </span>
-              <span>
-                <div>{"u.location.city"}</div>
-                <div>{"u.location.country"}</div>
-              </span>
-            </span>
-          </div>
-          )
-        }
+  return (
+    <div>
+      <div>
+        {pages.map(number => <span className={props.currentPage === number && s.selectedPage}
+          onClick={(e) => { props.onPageChanged(number) }}>{number}</span>)}
       </div>
-    )
-  }
-
+      {
+        props.users.map(u => <div key={u.id}>
+          <span>
+            <div>
+              <img className={s.img} src={u.photos.small != null ? u.photos.small : userPhoto} />
+            </div>
+            <div>
+              {u.followed ? <button onClick={() => { props.unfollow(u.id) }}>Отписаться</button> : <button onClick={() => { props.follow(u.id) }}>Подписаться</button>}
+            </div>
+          </span>
+          <span>
+            <span>
+              <div>{u.name}</div>
+              <div>{u.status}</div>
+            </span>
+            <span>
+              <div>{"u.location.city"}</div>
+              <div>{"u.location.country"}</div>
+            </span>
+          </span>
+        </div>
+        )
+      }
+    </div>
+  )
 }
 
 export default Users
