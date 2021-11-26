@@ -1,3 +1,24 @@
 .descriptionBlock{
+  display: flex;
   padding: 10px;
+}
+
+.avatarWrap{
+
+}
+
+.nameWrap{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.profileAvatar{  
+  max-width: 200px;
+  border-radius: 350px;
+  background-size: 100%;
 }
