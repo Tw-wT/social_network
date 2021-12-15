@@ -26,7 +26,7 @@ let initialState = {
 
 const messagesReducer = (state = initialState, action) => {  
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_BODY:{     
+    case UPDATE_NEW_MESSAGE_BODY:{
       return {
         ...state,
         newMessageBody: action.body
@@ -37,7 +37,7 @@ const messagesReducer = (state = initialState, action) => {
       return {
         ...state,
         newMessageBody: "",
-        messages: [...state.messages, {id:4, message: body}],        
+        messages: [...state.messages, {id:4, message: body}],
       }
     }
     default:
