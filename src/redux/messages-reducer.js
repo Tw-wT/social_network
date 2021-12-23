@@ -24,28 +24,28 @@ let initialState = {
   newMessageBody: "",
 }
 
-const messagesReducer = (state = initialState, action) => {  
+const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_BODY:{
+    case UPDATE_NEW_MESSAGE_BODY: {
       return {
         ...state,
-        newMessageBody: action.body
+        newMessageBody: action.body,
       }
-    } 
-    case SEND_MESSAGE:{
-      let body = state.newMessageBody         
+    }
+    case SEND_MESSAGE: {
+      let body = state.newMessageBody;
       return {
         ...state,
         newMessageBody: "",
-        messages: [...state.messages, {id:4, message: body}],
+        messages: [...state.messages, { id: 4, message: body }],
       }
     }
     default:
       return state
   }
-}
+};
 
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
 
 export const updateNewMessageBodyCreator = (body) => ({
   type: UPDATE_NEW_MESSAGE_BODY,

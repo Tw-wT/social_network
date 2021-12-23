@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={`${s.item}`}>
-                <NavLink to="/profile" activeClassName="zalupa">Профиль</NavLink>
+                <NavLink to="/profile">Профиль</NavLink>
             </div>
             <div className={s.item}>               
                 <NavLink to="/dialogs">Сообщения</NavLink>

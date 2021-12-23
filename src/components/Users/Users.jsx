@@ -1,10 +1,9 @@
 import React from "react"
 import s from "./Users.module.css"
 import userPhoto from "../../assets/images/default_user_avatar.jpg"
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 
 const Users = (props) => {
-
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
   pagesCount = 20 //установил 20 т.к. пользователей больше 60к и кол-во страниц слишком большое
   let pages = []
@@ -29,7 +28,12 @@ const Users = (props) => {
 
             </div>
             <div>
-              {u.followed ? <button onClick={() => { props.unFollow(u.id) }}>Отписаться</button> : <button onClick={() => { props.follow(u.id) }}>Подписаться</button>}
+              {u.followed ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {                
+                props.unFollow(u.id)               
+              }}>Отписаться</button> :
+                <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                  props.follow(u.id)
+                }}>Подписаться</button>}
             </div>
           </span>
           <span>
